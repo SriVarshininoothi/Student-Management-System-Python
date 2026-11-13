@@ -1,11 +1,11 @@
 
-
 #code
 
 def display_menu():
       print("===============================================")
 
       print("           STUDENT MANAGEMENT SYSTEM          ")
+
       print("===============================================")
 
       print("1. Add Student")
@@ -24,7 +24,10 @@ def display_menu():
 def handle_menu_choice(choice):
 
     if choice == 1:
+       
         print("You selected: Add Student")
+        add_student()
+        
     elif choice == 2:
         print("You selected: View All Students")
     elif choice ==3:
@@ -46,6 +49,41 @@ def handle_menu_choice(choice):
     else:
         print("Invalid choice, please try again..")
 
+
+students = []
+
+def add_student():
+
+    try:
+
+        student_id = int(input("enter a student id: "))
+        name = input("Enter student name: ")
+        age = int(input("enter student age: "))
+        course = input("Enter student course: ")
+        email = input("enter student email: ")
+
+    except ValueError:
+        print("Invalid input! Please enter numeric values for ID and age.")
+        return 
+        
+    
+    student = {
+
+        "student_id" : student_id,
+        "name" : name,
+        "age" : age,
+        "course" : course,
+        "email" : email
+    }
+
+    students.append(student)
+
+    
+    print("\n Student Registration successfully...")
+
+
+
+
 def main():
 
     choice=0
@@ -56,6 +94,7 @@ def main():
 
             choice = int(input("Enter your choice: "))
             handle_menu_choice(choice)
+
         except ValueError:
             print("Invalid input! Please enter a valid number between 1 and 10.")
             choice = 0
