@@ -30,6 +30,8 @@ def handle_menu_choice(choice):
         
     elif choice == 2:
         print("You selected: View All Students")
+        view_students()
+
     elif choice ==3:
         print("You selected: Search Student")
     elif choice == 4:
@@ -57,8 +59,31 @@ def add_student():
     try:
 
         student_id = int(input("enter a student id: "))
+
+
+        if student_id<=0:
+            print(f"Student ID {student_id} not negative and zero")
+            return
+        
+
+        for student in students:
+            if student["student_id"] == student_id:
+                print(f"\n Student ID {student_id} already exists! Registered cancelled")
+                return
+            
+
         name = input("Enter student name: ")
+        if name == "":
+            print(f"name should not empty")
+            return 
+
+
+
         age = int(input("enter student age: "))
+        if age<=0:
+            print(f"\n Age {age} should be positive")
+            return 
+
         course = input("Enter student course: ")
         email = input("enter student email: ")
 
@@ -81,6 +106,23 @@ def add_student():
     
     print("\n Student Registration successfully...")
 
+
+def view_students():
+
+    if not students:
+        print("\n No students registered yet.")
+        return 
+
+    print("=================== REGISTERED STUDENTS ======================")
+
+    for student in students:
+
+        print(f"Student ID: {student['student_id']}")
+        print(f"Name: {student['name']}")
+        print(f"Age: {student['age']}")
+        print(f"Course: {student['course']}")
+        print(f"Email: {student['email']}")
+        print("-"*23)
 
 
 
