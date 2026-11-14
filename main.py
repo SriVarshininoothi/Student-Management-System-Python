@@ -1,5 +1,5 @@
 
-#code
+# Display the menu list
 
 def display_menu():
     
@@ -21,6 +21,7 @@ def display_menu():
       print("10. Exit")
 
 
+# Handling User Choices
 
 def handle_menu_choice(choice):
 
@@ -36,11 +37,14 @@ def handle_menu_choice(choice):
     elif choice == 3:
         print("You selected: Search Student")
         search_student()
+
     elif choice == 4:
         print("You selected: Update Student")
         update_student()
+
     elif choice == 5:
         print("You selected: Delete Student")
+        delete_student()
     elif choice == 6:
         print("You selected: Update/Add Marks")
     elif choice == 7:
@@ -55,6 +59,9 @@ def handle_menu_choice(choice):
         print("Invalid choice, please try again..")
 
 
+# Adding Student Details
+
+# List to store students
 students = []
 
 def add_student():
@@ -111,6 +118,7 @@ def add_student():
     
     print("\n Student Registered successfully!")
 
+# View Students  Details
 
 def view_students():
 
@@ -151,6 +159,9 @@ def search_student():
 
     except ValueError:
         print("\n Invalid input! Please enter a valid numeric Student ID.")
+
+
+# Updating Studetd details while required fields
 
 def update_student():
 
@@ -230,7 +241,48 @@ def update_student():
     except ValueError:
             print("\n Invalid input, please provide numeric input id")           
                 
-            
+# Delete Student
+
+def delete_student():
+
+    if not students:
+        print("No Students registered yet.")
+        return 
+    
+    try:
+
+        delete_studentId = int(input("Enter Student ID to delete: "))
+
+        if delete_studentId<=0:
+            print("\n Please enter positive number")
+            return 
+        
+        for student in students:
+            if student["student_id"] == delete_studentId:
+                print("\n Student Found!")
+
+                print(f"\nStudent ID: {student['student_id']}")
+                print(f"Name: {student['name']}")
+                print(f"Age: {student['age']}")
+                print(f"Course: {student['course']}")
+                print(f"Email: {student['email']}")
+
+                delete_require = input("Are you sure you want to delete this student? (yes/no):")
+                if(delete_require.lower()=="yes"):
+                    students.remove(student)
+                    print("Student deleted successfully")
+                    return 
+                
+                else:
+                    print("Student deletion cancelled.")
+                    return 
+                
+        print(f"Student with ID {delete_studentId} not found.")
+
+    except ValueError:
+        print("\n Please enter valid input.It should be numeric value.")
+
+
     
 
 def main():
