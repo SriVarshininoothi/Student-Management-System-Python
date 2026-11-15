@@ -1,6 +1,7 @@
 class Student:
 
     def __init__(self,student_id,name,age,course,email):
+
         self.__student_id = student_id
         self.__name=name
         self.__age=age
@@ -14,18 +15,18 @@ class Student:
         return self.__name
 
     def set_name(self,new_name):
-        if new_name.strip() != "":
+        if isinstance(new_name,str) and new_name.strip() != "":
             self.__name = new_name.strip()
-            print("Success")
-        else:
-            print("Invalid empty field")
+            return True
+        
+        return False
 
     def set_age(self,new_age):
-        if new_age > 0:
+        if isinstance(new_age,int) and not isinstance(new_age,bool) and new_age > 0:
             self.__age = new_age
-            print("Success")
-        else:
-            print("Inavlid age")
+            return True
+                    
+        return False
 
     def get_age(self):
         return self.__age
@@ -34,26 +35,26 @@ class Student:
         return self.__course
     
     def set_course(self, new_course):
-        if new_course.strip() != "":
+        if isinstance(new_course, str) and new_course.strip() != "":
             self.__course = new_course.strip()
-            print("Success")
-        else:
-            print("Invalid empty field")
+            return True
+                
+        return False
 
     def get_email(self):
         return self.__email
 
     def set_email(self, new_email):
-        if new_email.strip() != "":
+        if isinstance(new_email, str) and new_email.strip() != "" and "@" in new_email and "." in new_email:
             self.__email = new_email.strip()
-            print("Success")
-        else:
-            print("Invalid empty field")
+            return True
+
+        return False
 
     
             
     
 
-student1 = Student(101,"Rahul",22,"Python","rahul@gmail.com")
+student1 = Student(101,"Rahul",-1,"Python","rahul@gmail.com")
 student1.set_age(-1)
 print(student1.get_age())       

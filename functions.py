@@ -1,3 +1,13 @@
+from models import Student
+
+from validation import(
+    validate_student_id,
+    validate_name,
+    validate_email,
+    validate_age,
+    validate_course
+)
+
 
 # List to store students
 students = []
@@ -6,11 +16,11 @@ students = []
 
 def display_student(student):
 
-    print(f"\nStudent ID: {student['student_id']}")
-    print(f"Name: {student['name']}")
-    print(f"Age: {student['age']}")
-    print(f"Course: {student['course']}")
-    print(f"Email: {student['email']}")
+    print(f"\nStudent ID: {student.get_student_id()}")
+    print(f"Name: {student.get_name()}")
+    print(f"Age: {student.get_age()}")
+    print(f"Course: {student.get_course()}")
+    print(f"Email: {student.get_email()}")
 
 
 # Reusable function to find a student by ID
@@ -19,7 +29,7 @@ def find_student(student_id):
 
     for student in students:
 
-        if student["student_id"] == student_id:
+        if student.get_student_id() == student_id:
             return student
 
     return None
@@ -32,9 +42,7 @@ def add_student():
 
         student_id = int(input("Enter a student ID: "))
 
-        if student_id <= 0:
-            print("Student ID must be positive.")
-            return
+        validate_student_id(student_id)
 
         # Check duplicate ID using find_student()
         if find_student(student_id) is not None:
@@ -42,6 +50,7 @@ def add_student():
             return
 
         name = input("Enter student name: ")
+        validate_name(name)
 
         if name.strip() == "":
             print("Student name should not be empty.")
@@ -49,28 +58,23 @@ def add_student():
 
         age = int(input("Enter student age: "))
 
-        if age <= 0:
-            print("Age should be a positive number.")
-            return
+        validate_age(age)
 
         course = input("Enter student course: ")
+        validate_course(course)
         email = input("Enter student email: ")
+        validate_email(email)
 
     except ValueError:
         print("Invalid input! Please enter numeric values for ID and age.")
         return
 
-    student = {
-        "student_id": student_id,
-        "name": name,
-        "age": age,
-        "course": course,
-        "email": email
-    }
+    student = Student(student_id,name,age,course,email)
 
     students.append(student)
 
     print("\nStudent registered successfully!")
+    
 
 
 # View Student Details
@@ -114,7 +118,7 @@ def search_student():
         print("Invalid input! Please enter a valid numeric Student ID.")
 
 
-# Update Student Details
+# update students
 
 def update_student():
 
@@ -133,86 +137,72 @@ def update_student():
             return
 
         print("\nStudent Found!")
+
         display_student(student)
 
         updated = False
 
         # Update Name
-
         name_require = input("Do you want to update Name? (yes/no): ")
 
         if name_require.lower() == "yes":
 
             new_name = input("Enter new name: ")
 
-            if new_name.strip() != "":
-                student["name"] = new_name
+            if student.set_name(new_name):
                 updated = True
-
             else:
-                print("Name cannot be empty. Keeping existing name.")
+                print("Invalid name. Keeping existing name.")
 
         # Update Age
-
         age_require = input("Do you want to update Age? (yes/no): ")
 
         if age_require.lower() == "yes":
 
             try:
-
                 new_age = int(input("Enter new age: "))
 
-                if new_age <= 0:
-                    print("Age should be a positive number.")
-
-                else:
-                    student["age"] = new_age
+                if student.set_age(new_age):
                     updated = True
+                else:
+                    print("Invalid age. Keeping existing age.")
 
             except ValueError:
                 print("Age should be a numeric value.")
 
         # Update Course
-
         course_require = input("Do you want to update Course? (yes/no): ")
 
         if course_require.lower() == "yes":
 
             new_course = input("Enter new course: ")
 
-            if new_course.strip() != "":
-                student["course"] = new_course
+            if student.set_course(new_course):
                 updated = True
-
             else:
-                print("Course field should not be empty.")
+                print("Invalid course. Keeping existing course.")
 
         # Update Email
-
         email_require = input("Do you want to update Email? (yes/no): ")
 
         if email_require.lower() == "yes":
 
             new_email = input("Enter new email: ")
 
-            if new_email.strip() != "":
-                student["email"] = new_email
+            if student.set_email(new_email):
                 updated = True
-
             else:
-                print("Email field should not be empty.")
+                print("Invalid email. Keeping existing email.")
 
-        # Display update result after checking all fields
-
+        # Display update result
         if updated:
             print("\nStudent details updated successfully!")
-
+            display_student(student)
         else:
             print("\nNo changes were made.")
 
     except ValueError:
         print("Invalid input. Please provide a numeric Student ID.")
-
 
 # Delete Student
 
