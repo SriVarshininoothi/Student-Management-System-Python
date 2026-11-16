@@ -42,7 +42,9 @@ def add_student():
 
         student_id = int(input("Enter a student ID: "))
 
-        validate_student_id(student_id)
+        if not validate_student_id(student_id):
+            print("Invalid Student ID.")
+            return 
 
         # Check duplicate ID using find_student()
         if find_student(student_id) is not None:
@@ -50,20 +52,27 @@ def add_student():
             return
 
         name = input("Enter student name: ")
-        validate_name(name)
-
-        if name.strip() == "":
-            print("Student name should not be empty.")
+        if not validate_name(name):
+            print("Invalid Student Name.")
             return
+
+
 
         age = int(input("Enter student age: "))
 
-        validate_age(age)
+        if not validate_age(age):
+            print("Invalid Student Age.")
+            return 
 
         course = input("Enter student course: ")
-        validate_course(course)
+        if not validate_course(course):
+            print("Invalid Student Course.")
+            return 
+
         email = input("Enter student email: ")
-        validate_email(email)
+        if not validate_email(email):
+            print("Invalid Student Email")
+            return 
 
     except ValueError:
         print("Invalid input! Please enter numeric values for ID and age.")
@@ -101,8 +110,8 @@ def search_student():
 
         search_id = int(input("Enter Student ID to search: "))
 
-        if search_id <= 0:
-            print("Student ID must be positive.")
+        if not validate_student_id(search_id):
+            print("Invalid Student ID")
             return
 
         student = find_student(search_id)
@@ -126,9 +135,9 @@ def update_student():
 
         update_id = int(input("Enter a Student ID: "))
 
-        if update_id <= 0:
-            print("Student ID must be positive.")
-            return
+        if not validate_student_id(update_id):
+            print("Invalid Student ID.")
+            return 
 
         student = find_student(update_id)
 
@@ -149,10 +158,12 @@ def update_student():
 
             new_name = input("Enter new name: ")
 
-            if student.set_name(new_name):
-                updated = True
+            # Name
+            if not validate_name(new_name):
+                print("Invalid Student Name.")
             else:
-                print("Invalid name. Keeping existing name.")
+                student.set_name(new_name)
+                updated = True
 
         # Update Age
         age_require = input("Do you want to update Age? (yes/no): ")
@@ -162,10 +173,12 @@ def update_student():
             try:
                 new_age = int(input("Enter new age: "))
 
-                if student.set_age(new_age):
-                    updated = True
-                else:
+                if not validate_age(new_age):
                     print("Invalid age. Keeping existing age.")
+                else:
+                    student.set_age(new_age)
+                    updated = True
+                    
 
             except ValueError:
                 print("Age should be a numeric value.")
@@ -177,11 +190,14 @@ def update_student():
 
             new_course = input("Enter new course: ")
 
-            if student.set_course(new_course):
-                updated = True
-            else:
+            if not validate_course(new_course):
                 print("Invalid course. Keeping existing course.")
-
+                
+                
+            else:
+                student.set_course(new_course)
+                updated=True
+                
         # Update Email
         email_require = input("Do you want to update Email? (yes/no): ")
 
@@ -189,10 +205,12 @@ def update_student():
 
             new_email = input("Enter new email: ")
 
-            if student.set_email(new_email):
-                updated = True
-            else:
+            if not validate_email(new_email):
                 print("Invalid email. Keeping existing email.")
+            else:
+                student.set_email(new_email)
+                updated = True
+                
 
         # Display update result
         if updated:
@@ -216,8 +234,8 @@ def delete_student():
 
         delete_student_id = int(input("Enter Student ID to delete: "))
 
-        if delete_student_id <= 0:
-            print("Please enter a positive number.")
+        if not validate_student_id(delete_student_id):
+            print("Invalid Student ID")
             return
 
         # Reuse find_student() instead of a for loop
