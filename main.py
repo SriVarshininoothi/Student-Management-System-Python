@@ -4,7 +4,8 @@ from functions import (
     view_students,
     search_student,
     update_student,
-    delete_student
+    delete_student,
+    add_marks
 )
 
 # Display the menu list
@@ -54,7 +55,8 @@ def handle_menu_choice(choice):
 
     elif choice == 6:
         print("You selected: Update/Add Marks")
-
+        add_marks()
+        
     elif choice == 7:
         print("You selected: Calculate Grade")
 

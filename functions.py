@@ -1,16 +1,19 @@
 from models import Student
 
+from storage import load_students,save_students
+
 from validation import(
     validate_student_id,
     validate_name,
     validate_email,
     validate_age,
-    validate_course
+    validate_course,
+    validate_marks
 )
 
 
 # List to store students
-students = []
+students = load_students()
 
 # Reusable function to display student details
 
@@ -21,6 +24,7 @@ def display_student(student):
     print(f"Age: {student.get_age()}")
     print(f"Course: {student.get_course()}")
     print(f"Email: {student.get_email()}")
+    print(f"marks:{student.get_marks()}")
 
 
 # Reusable function to find a student by ID
@@ -81,6 +85,7 @@ def add_student():
     student = Student(student_id,name,age,course,email)
 
     students.append(student)
+    save_students(students)
 
     print("\nStudent registered successfully!")
     
@@ -215,6 +220,7 @@ def update_student():
         # Display update result
         if updated:
             print("\nStudent details updated successfully!")
+            save_students(students)
             display_student(student)
         else:
             print("\nNo changes were made.")
@@ -254,6 +260,7 @@ def delete_student():
         if delete_require.lower() == "yes":
 
             students.remove(student)
+            save_students(students)
             print("Student deleted successfully.")
 
         else:
@@ -261,4 +268,45 @@ def delete_student():
 
     except ValueError:
         print("Please enter a valid numeric Student ID.")
+
+
+# Adding Marks to their subject wise
+
+def add_marks():
+
+    try:
+
+        student_id = int(input("Enter Student ID. "))
+
+        if not validate_student_id(student_id):
+            print("Invalid Student ID")
+            return 
+
+        student = find_student(student_id)
+
+        if student is None:
+
+            print(f"Student with ID {student_id} not found.")
+            return 
+
+        subject = input("Enter Subject: ")
+
+        if not validate_course(subject):
+            print("Invalid Subject.")
+            return 
+
+        marks = int(input("Enter Marks: "))
+
+        if not validate_marks(marks):
+            print("Invalid Marks.Enter marks between o and 100.")
+            return 
+        
+        student.set_marks(subject,marks)
+        save_students(students)
+        print("Marks added successfully!")
+        
+
+    except ValueError:
+
+        print("Invalid input! Please enter numeric values for Student ID and marks.")
 

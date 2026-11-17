@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "student_id": 101,
+        "name": "varsha",
+        "age": 23,
+        "course": "python full stack",
+        "email": "varsha@gmail.com",
+        "marks": {
+            "python": 85,
+            "sql": 90
+        }
+    },
+    {
+        "student_id": 102,
+        "name": "vardu",
+        "age": 23,
+        "course": "dsa",
+        "email": "vardu@gmail.com",
+        "marks": {
+            "Python": 89,
+            "sql": 90
+        }
+    },
+    {
+        "student_id": 103,
+        "name": "sai",
+        "age": 34,
+        "course": "dsa",
+        "email": "sai@gmail.com",
+        "marks": {}
+    }
+]

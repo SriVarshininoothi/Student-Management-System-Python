@@ -7,6 +7,7 @@ class Student:
         self.__age=age
         self.__course = course
         self.__email = email
+        self.__subject_marks={}
 
     def get_student_id(self):
         return self.__student_id
@@ -51,10 +52,20 @@ class Student:
 
         return False
 
-    
-            
-    
+    def get_marks(self):
+        return self.__subject_marks
 
-student1 = Student(101,"Rahul",-1,"Python","rahul@gmail.com")
-student1.set_age(-1)
-print(student1.get_age())       
+    def set_marks(self,subject,marks):
+          
+          if ( isinstance(subject,str) 
+          and subject.strip() != "" 
+          and isinstance(marks,int)
+          and not isinstance(marks,bool)
+          and 0 <= marks<=100
+          ):
+              self.__subject_marks[subject.strip()] = marks
+              return True
+          return False
+              
+    
+   
