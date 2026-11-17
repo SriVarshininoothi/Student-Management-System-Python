@@ -2,18 +2,7 @@ from validation import validate_student_id
 
 from functions import find_student
 
-def get_grade(mark):
-
-    if mark >= 90:
-        return "A"
-    elif mark >= 80:
-        return "B"
-    elif mark >= 70:
-        return "C"
-    elif mark >= 60:
-        return "D"
-    else:
-        return "F"
+from utils.helpers import get_grade
     
 
 def generate_student_report():
@@ -80,4 +69,4 @@ def generate_student_report():
 
 
     except ValueError:
-        print("Inavlid input! Pkease enter a numeric Student ID.")
+        print("Invalid input! Please enter a numeric Student ID.")

@@ -11,7 +11,7 @@ from validation import(
     validate_marks
 )
 
-from reports import get_grade
+from utils.helpers import get_grade
 
 
 # List to store students
