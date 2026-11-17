@@ -11,6 +11,8 @@ from validation import(
     validate_marks
 )
 
+from reports import get_grade
+
 
 # List to store students
 students = load_students()
@@ -309,4 +311,41 @@ def add_marks():
     except ValueError:
 
         print("Invalid input! Please enter numeric values for Student ID and marks.")
+
+
+# Calculate Student Grade
+
+def calculate_grade():
+
+    try:
+    
+            student_id = int(input("Enter Student ID. "))
+    
+            if not validate_student_id(student_id):
+                print("Invalid Student ID")
+                return 
+    
+            student = find_student(student_id)
+    
+            if student is None:
+    
+                print(f"Student with ID {student_id} not found.")
+                return 
+            
+            marks = student.get_marks()
+
+            if not marks:
+                print("No marks found for this student.")
+                return 
+
+            for subject,mark in marks.items():
+
+                grade = get_grade(mark)
+
+                print(subject,mark,grade)
+            
+    except ValueError:
+    
+            print("Invalid input! Please enter numeric values for Student ID and marks.")
+
 

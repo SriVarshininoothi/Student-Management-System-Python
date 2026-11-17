@@ -5,8 +5,13 @@ from functions import (
     search_student,
     update_student,
     delete_student,
-    add_marks
+    add_marks,
+    calculate_grade,
+    
+
 )
+
+from reports import generate_student_report
 
 # Display the menu list
 
@@ -59,12 +64,15 @@ def handle_menu_choice(choice):
         
     elif choice == 7:
         print("You selected: Calculate Grade")
+        calculate_grade()
 
     elif choice == 8:
         print("You selected: Student Report")
+        generate_student_report()
 
     elif choice == 9:
         print("You selected: Attendance Management")
+
 
     elif choice == 10:
         print("Exiting Application")

@@ -7,7 +7,9 @@
         "email": "varsha@gmail.com",
         "marks": {
             "python": 85,
-            "sql": 90
+            "sql": 90,
+            "react": 75,
+            "html": 89
         }
     },
     {
@@ -18,7 +20,8 @@
         "email": "vardu@gmail.com",
         "marks": {
             "Python": 89,
-            "sql": 90
+            "sql": 90,
+            "css": 49
         }
     },
     {
@@ -27,6 +30,10 @@
         "age": 34,
         "course": "dsa",
         "email": "sai@gmail.com",
-        "marks": {}
+        "marks": {
+            "python": 30,
+            "sql": 50,
+            "dsa": 40
+        }
     }
 ]
