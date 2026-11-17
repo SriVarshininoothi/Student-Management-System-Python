@@ -70,3 +70,84 @@ def generate_student_report():
 
     except ValueError:
         print("Invalid input! Please enter a numeric Student ID.")
+
+
+# View Student Attendance
+
+def view_attendance():
+
+    try:
+        student_id = int(input("Enter Student ID: "))
+        
+        if not validate_student_id(student_id):
+            print("Invalid Student ID.")
+            return
+        
+        student = find_student(student_id)
+        
+        if student is None:
+            print(f"Student with ID {student_id} not found.")
+            return
+
+        attendance = student.get_attendance()
+
+        if not attendance :
+            print("No attendance records found.")
+            return 
+        
+        for date,status in attendance.items():
+            
+            print(date,status)
+
+      
+
+    except ValueError:
+        print("Invalid input! Please enter a numeric Student ID.")
+
+
+# Calculate attendance percentage
+
+def calculate_attendance_percentage():
+
+    try:
+        student_id = int(input("Enter Student ID: "))
+                
+        if not validate_student_id(student_id):
+            print("Invalid Student ID.")
+            return
+                
+        student = find_student(student_id)
+    
+        if student is None:
+            print(f"Student with ID {student_id} not found.")
+            return
+        
+        attendance = student.get_attendance()
+        
+        if not attendance :
+            print("No attendance records found.")
+            return 
+
+        present = 0
+        absent =  0
+        for date,status in attendance.items():
+            if status == "Present":
+
+                present+=1
+            elif status == "Absent":
+                absent+=1
+
+        total = present+absent
+
+        attendance_percentage = (present/total)*100
+
+        print("\n========== ATTENDANCE SUMMARY ==========")
+        print(f"Present Days: {present}")
+        print(f"Absent Days: {absent}")
+        print(f"Total Days: {total}")
+        print(f"Attendance Percentage: {attendance_percentage:.2f}%")
+        print("========================================")
+
+
+    except ValueError:
+        print("Invalid input! Please enter a numeric Student ID.")
