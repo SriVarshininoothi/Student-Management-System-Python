@@ -7,6 +7,7 @@ from functions import (
     delete_student,
     add_marks,
     calculate_grade,
+    mark_attendance
     
 
 )
@@ -72,6 +73,7 @@ def handle_menu_choice(choice):
 
     elif choice == 9:
         print("You selected: Attendance Management")
+        mark_attendance()
 
 
     elif choice == 10:

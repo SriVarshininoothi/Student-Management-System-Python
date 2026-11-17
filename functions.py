@@ -349,3 +349,69 @@ def calculate_grade():
             print("Invalid input! Please enter numeric values for Student ID and marks.")
 
 
+
+# Mark Student Attendance
+
+def mark_attendance():
+
+    try:
+        student_id = int(input("Enter Student ID: "))
+
+        if not validate_student_id(student_id):
+            print("Invalid Student ID.")
+            return
+
+        student = find_student(student_id)
+
+        if student is None:
+            print(f"Student with ID {student_id} not found.")
+            return
+
+        date = input("Enter Attendance Date (YYYY-MM-DD): ")
+
+        status = input("Enter Attendance Status (Present/Absent): ")
+
+        result = student.set_attendance(date, status)
+
+        if result:
+            save_students(students)
+            print("Attendance marked successfully!")
+        else:
+            print("Invalid date or attendance status.")
+
+    except ValueError:
+        print("Invalid input! Please enter a numeric Student ID.")
+
+
+# View Student Attendance
+
+def view_attendance():
+
+    try:
+        student_id = int(input("Enter Student ID: "))
+        
+        if not validate_student_id(student_id):
+            print("Invalid Student ID.")
+            return
+        
+        student = find_student(student_id)
+        
+        if student is None:
+            print(f"Student with ID {student_id} not found.")
+            return
+
+        attendance = student.get_attendance()
+
+        if not attendance :
+            print("No attendance records found.")
+            return 
+        
+        for date,status in attendance.items():
+
+            print(date,status)
+
+
+
+
+    except ValueError:
+        print("Invalid input! Please enter a numeric Student ID.")

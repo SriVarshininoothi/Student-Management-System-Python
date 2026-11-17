@@ -10,6 +10,9 @@
             "sql": 90,
             "react": 75,
             "html": 89
+        },
+        "attendance": {
+            "2026-11-17": "Present"
         }
     },
     {
@@ -22,7 +25,8 @@
             "Python": 89,
             "sql": 90,
             "css": 49
-        }
+        },
+        "attendance": {}
     },
     {
         "student_id": 103,
@@ -34,6 +38,7 @@
             "python": 30,
             "sql": 50,
             "dsa": 40
-        }
+        },
+        "attendance": {}
     }
 ]

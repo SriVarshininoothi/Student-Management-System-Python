@@ -15,7 +15,8 @@ def student_to_dict(student):
         "age": student.get_age(),
         "course": student.get_course(),
         "email":student.get_email(),
-        "marks":student.get_marks()
+        "marks":student.get_marks(),
+        "attendance":student.get_attendance()
 
     }
     return student_data
@@ -39,6 +40,11 @@ def dict_to_student(student_data):
     for subject, mark in marks.items():
 
         student.set_marks(subject,mark)
+
+    attendance = student_data.get("attendance", {})
+
+    for date, status in attendance.items():
+        student.set_attendance(date, status)
 
     return student
 

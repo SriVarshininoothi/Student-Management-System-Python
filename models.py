@@ -8,6 +8,7 @@ class Student:
         self.__course = course
         self.__email = email
         self.__subject_marks={}
+        self.__attendance = {}
 
     def get_student_id(self):
         return self.__student_id
@@ -66,6 +67,21 @@ class Student:
               self.__subject_marks[subject.strip()] = marks
               return True
           return False
-              
+
+    def get_attendance(self):
+        return self.__attendance
+
+    def set_attendance(self, date, status):
+        if isinstance(date, str) and date.strip() != "" and isinstance(status, str):
+
+            clean_status = status.strip().capitalize()
+
+            if clean_status in ("Present", "Absent"):
+                self.__attendance[date.strip()] = clean_status
+
+                return True
+            
+        return False
+
     
    
