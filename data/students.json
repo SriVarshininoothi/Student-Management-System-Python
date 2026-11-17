@@ -12,7 +12,7 @@
             "html": 89
         },
         "attendance": {
-            "2026-11-17": "Present"
+            "2026-11-17": "Absent"
         }
     },
     {
@@ -26,7 +26,9 @@
             "sql": 90,
             "css": 49
         },
-        "attendance": {}
+        "attendance": {
+            "2026-11-17": "Present"
+        }
     },
     {
         "student_id": 103,
@@ -39,6 +41,8 @@
             "sql": 50,
             "dsa": 40
         },
-        "attendance": {}
+        "attendance": {
+            "2026-11-17": "Present"
+        }
     }
 ]

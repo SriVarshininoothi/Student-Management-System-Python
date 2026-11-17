@@ -7,7 +7,7 @@ def validate_student_id(student_id):
 
 def validate_name(name):
 
-    if isinstance(name,str) and name.strip()!= "" :
+    if isinstance(name,str) and name.strip()!= "" and not isinstance(name,str):
         return True
     return False
 

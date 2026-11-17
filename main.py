@@ -7,12 +7,17 @@ from functions import (
     delete_student,
     add_marks,
     calculate_grade,
-    mark_attendance
+    mark_attendance,
     
 
 )
 
-from reports import generate_student_report
+from reports import (
+    generate_student_report,
+    view_attendance,
+    calculate_attendance_percentage
+    )
+    
 
 # Display the menu list
 
@@ -30,8 +35,10 @@ def display_menu():
     print("6. Add/Update Marks")
     print("7. Calculate Grade")
     print("8. Student Report")
-    print("9. Attendance Management")
-    print("10. Exit")
+    print("9. Mark Attendance")
+    print("10. View Attendance")
+    print("11. Calculate Attendance Percentage")
+    print("12. Exit")
 
 
 
@@ -72,11 +79,19 @@ def handle_menu_choice(choice):
         generate_student_report()
 
     elif choice == 9:
-        print("You selected: Attendance Management")
+        print("You selected: Mark Attendance")
         mark_attendance()
 
 
     elif choice == 10:
+        print("You selected: View Attendance")
+        view_attendance()
+
+    elif choice == 11:
+        print("You selected: Calculate Attendance Percentage")
+        calculate_attendance_percentage()
+
+    elif choice == 12:
         print("Exiting Application")
 
     else:
@@ -89,7 +104,7 @@ def main():
 
     choice = 0
 
-    while choice != 10:
+    while choice != 12:
 
         display_menu()
 

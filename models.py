@@ -74,9 +74,15 @@ class Student:
     def set_attendance(self, date, status):
         if isinstance(date, str) and date.strip() != "" and isinstance(status, str):
 
+            
+            clean_date = date.strip()
             clean_status = status.strip().capitalize()
 
             if clean_status in ("Present", "Absent"):
+                
+                if clean_date in self.__attendance:
+                    return False
+                
                 self.__attendance[date.strip()] = clean_status
 
                 return True

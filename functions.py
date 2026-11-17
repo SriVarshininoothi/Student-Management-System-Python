@@ -377,41 +377,8 @@ def mark_attendance():
             save_students(students)
             print("Attendance marked successfully!")
         else:
-            print("Invalid date or attendance status.")
+            print("Attendance already marked for this date or invalid attendance details")
 
     except ValueError:
         print("Invalid input! Please enter a numeric Student ID.")
 
-
-# View Student Attendance
-
-def view_attendance():
-
-    try:
-        student_id = int(input("Enter Student ID: "))
-        
-        if not validate_student_id(student_id):
-            print("Invalid Student ID.")
-            return
-        
-        student = find_student(student_id)
-        
-        if student is None:
-            print(f"Student with ID {student_id} not found.")
-            return
-
-        attendance = student.get_attendance()
-
-        if not attendance :
-            print("No attendance records found.")
-            return 
-        
-        for date,status in attendance.items():
-
-            print(date,status)
-
-
-
-
-    except ValueError:
-        print("Invalid input! Please enter a numeric Student ID.")
