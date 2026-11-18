@@ -8,16 +8,14 @@ from functions import (
     add_marks,
     calculate_grade,
     mark_attendance,
-    
-
 )
 
 from reports import (
     generate_student_report,
     view_attendance,
-    calculate_attendance_percentage
-    )
-    
+    calculate_attendance_percentage,
+)
+
 
 # Display the menu list
 
@@ -39,7 +37,6 @@ def display_menu():
     print("10. View Attendance")
     print("11. Calculate Attendance Percentage")
     print("12. Exit")
-
 
 
 # Handling User Choices
@@ -69,7 +66,7 @@ def handle_menu_choice(choice):
     elif choice == 6:
         print("You selected: Update/Add Marks")
         add_marks()
-        
+
     elif choice == 7:
         print("You selected: Calculate Grade")
         calculate_grade()
@@ -82,7 +79,6 @@ def handle_menu_choice(choice):
         print("You selected: Mark Attendance")
         mark_attendance()
 
-
     elif choice == 10:
         print("You selected: View Attendance")
         view_attendance()
@@ -92,7 +88,8 @@ def handle_menu_choice(choice):
         calculate_attendance_percentage()
 
     elif choice == 12:
-        print("Exiting Application")
+        print("Exiting Application. Thank you!")
+        return
 
     else:
         print("Invalid choice, please try again.")
@@ -109,13 +106,11 @@ def main():
         display_menu()
 
         try:
-
             choice = int(input("Enter your choice: "))
             handle_menu_choice(choice)
 
         except ValueError:
-
-            print("Invalid input! Please enter a valid number between 1 and 10.")
+            print("Invalid input! Please enter a valid number between 1 and 12.")
             choice = 0
 
 
