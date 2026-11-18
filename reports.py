@@ -25,11 +25,11 @@ def generate_student_report():
 
         print("\n ======== STUDENT REPORT =============")
 
-        print(f"Student ID : {student.get_student_id()}")
+        print(f"Student ID :  {student.get_student_id()}")
         print(f"Name       :  {student.get_name()}")
         print(f"Age        :  {student.get_age()}")
-        print(f"Course     :   {student.get_course()}")
-        print(f"Email      :   {student.get_email()}")
+        print(f"Course     :  {student.get_course()}")
+        print(f"Email      :  {student.get_email()}")
 
         if not marks:
             print("\nNo marks available for this student.")
@@ -67,7 +67,6 @@ def generate_student_report():
 
 
 
-
     except ValueError:
         print("Invalid input! Please enter a numeric Student ID.")
 
@@ -95,11 +94,12 @@ def view_attendance():
             print("No attendance records found.")
             return 
         
-        for date,status in attendance.items():
-            
-            print(date,status)
+        print("\n========== ATTENDANCE DETAILS ==========")
+        print(f"Student ID: {student.get_student_id()}")
+        print(f"Name: {student.get_name()}")
 
-      
+        for date, status in attendance.items():
+            print(date, status)
 
     except ValueError:
         print("Invalid input! Please enter a numeric Student ID.")
@@ -130,10 +130,12 @@ def calculate_attendance_percentage():
 
         present = 0
         absent =  0
-        for date,status in attendance.items():
-            if status == "Present":
 
+        for date,status in attendance.items():
+
+            if status == "Present":
                 present+=1
+
             elif status == "Absent":
                 absent+=1
 
@@ -141,11 +143,11 @@ def calculate_attendance_percentage():
 
         attendance_percentage = (present/total)*100
 
-        print("\n========== ATTENDANCE SUMMARY ==========")
-        print(f"Present Days: {present}")
-        print(f"Absent Days: {absent}")
-        print(f"Total Days: {total}")
-        print(f"Attendance Percentage: {attendance_percentage:.2f}%")
+        print("\n========== ATTENDANCE SUMMARY ===========")
+        print(f"Present Days : {present}")
+        print(f"Absent Days  : {absent}")
+        print(f"Total Days   : {total}")
+        print(f"Attendance Percentage: {attendance_percentage : .2f}%")
         print("========================================")
 
 

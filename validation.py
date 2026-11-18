@@ -7,8 +7,9 @@ def validate_student_id(student_id):
 
 def validate_name(name):
 
-    if isinstance(name,str) and name.strip()!= "" and not isinstance(name,str):
+    if isinstance(name,str) and name.strip()!= "" and not isinstance(name,bool):
         return True
+    
     return False
 
 def validate_age(age):
@@ -31,4 +32,11 @@ def validate_email(email):
 def validate_marks(marks):
     if isinstance(marks,int) and not isinstance(marks,bool) and 0<=marks<=100:
         return True
+    return False
+
+def validate_attendance(status):
+
+    if isinstance(status, str) and status.strip().capitalize() in ("Present", "Absent"):
+        return True
+
     return False
