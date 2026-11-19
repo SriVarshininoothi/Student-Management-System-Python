@@ -1,49 +1,123 @@
 [
     {
         "student_id": 101,
-        "name": "varsha",
-        "age": 23,
-        "course": "python full stack",
-        "email": "varsha@gmail.com",
+        "name": "Rahul Sharma",
+        "age": 22,
+        "course": "Python",
+        "email": "rahul@gmail.com",
         "marks": {
-            "python": 85,
-            "sql": 90,
-            "react": 75,
-            "html": 89
+            "Python": 85,
+            "Java": 78,
+            "SQL": 90,
+            "HTML/CSS": 88,
+            "JS": 82
         },
         "attendance": {
-            "2026-11-17": "Absent"
+            "01-11-2026": "Present",
+            "02-11-2026": "Present",
+            "03-11-2026": "Absent",
+            "04-11-2026": "Present"
+
         }
     },
     {
         "student_id": 102,
-        "name": "vardu",
-        "age": 23,
-        "course": "dsa",
-        "email": "vardu@gmail.com",
+        "name": "Priya Reddy ",
+        "age": 21,
+        "course": "Java",
+        "email": "priya@gmail.com",
         "marks": {
-            "Python": 89,
-            "sql": 90,
-            "css": 49
+            "Python": 72,
+            "Java": 80,
+            "SQL": 75,
+            "HTML/CSS": 85,
+            "JS": 79
         },
         "attendance": {
-            "2026-11-17": "Present"
+            "01-11-2026": "Present",
+            "02-11-2026": "Absent",
+            "03-11-2026": "Present",
+            "04-11-2026": "Present"
         }
     },
     {
         "student_id": 103,
-        "name": "sai",
-        "age": 34,
-        "course": "dsa",
-        "email": "sai@gmail.com",
+        "name": "Arjun Kumar",
+        "age": 23,
+        "course": "Full Stack",
+        "email": "arjun@gmail.com",
         "marks": {
-            "python": 30,
-            "sql": 50,
-            "dsa": 40
+            "Python": 91,
+            "Java": 88,
+            "SQL": 95,
+            "HTML/CSS": 92,
+            "JS": 89
         },
         "attendance": {
-            "2026-11-17": "Present",
-            "2026-11-18": "Present"
+            "01-11-2026": "Present",
+            "02-11-2026": "Present",
+            "03-11-2026": "Present",
+            "04-11-2026": "Absent"
+        }
+    },
+    {
+        "student_id": 104,
+        "name": "Sneha Rao",
+        "age": 20,
+        "course": "Python",
+        "email": "sneha@gmail.com",
+        "marks": {
+            "Python": 65,
+            "Java": 70,
+            "SQL": 68,
+            "HTML/CSS": 75,
+            "JS": 72
+        },
+        "attendance": {
+            "01-11-2026": "Absent",
+            "02-11-2026": "Present",
+            "03-11-2026": "Present",
+            "04-11-2026": "Present"
+        }
+    },
+    {
+        "student_id": 105,
+        "name": "Kiran Patel",
+        "age": 24,
+        "course": "Data Science",
+        "email": "kiran@gmail.com",
+        "marks": {
+            "Python": 48,
+            "Java": 55,
+            "SQL": 60,
+            "HTML/CSS": 52,
+            "Js": 45
+        },
+        "attendance": {
+            "01-11-2026": "Present",
+            "02-11-2026": "Present",
+            "03-11-2026": "Absent",
+            "04-11-2026": "Present"
+        }
+    },
+    {
+        "student_id": 106,
+        "name": "Divya Sharma",
+        "age": 22,
+        "course": "Java",
+        "email": "divya@gmail.com",
+        "marks": {
+            "Python": 39,
+            "Java": 45,
+            "SQL": 42,
+            "HTML/CSS": 50,
+            "JS": 38
+        },
+        "attendance": {
+            "01-11-2026": "Present",
+            "02-11-2026": "Present",
+            "03-11-2026": "Present",
+            "04-11-2026": "Present"
         }
     }
 ]

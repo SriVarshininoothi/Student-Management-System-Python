@@ -19,10 +19,13 @@ def validate_age(age):
     return False
 
 def validate_course(course):
-
-    if isinstance(course,str) and course.strip()!="":
-        return True
+    if isinstance(course, str) and course.strip() != "":
+        cleaned = course.strip()
+        # Must contain at least one letter (rejects "123" and "---")
+        if any(char.isalpha() for char in cleaned):
+            return True
     return False
+
 
 def validate_email(email):
     if isinstance(email,str) and email.strip()!="" and "@" in email and "." in email:
